@@ -1,0 +1,10 @@
+[package]
+name = "e2e"
+version = "1.0.0"
+publish = false
+edition = "2024"
+
+[dependencies]
+taletskicom = { path = "../.." } 
+fantoccini = "0.20.0"
+webdriver-install = "0.3.2"

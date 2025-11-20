@@ -1,7 +1,7 @@
-mod config;
-mod handlers;
-mod route;
 mod serve;
+mod route;
+mod handlers;
+mod config;
 
 use anyhow::Result;
 use dotenvy::dotenv;

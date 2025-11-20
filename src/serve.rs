@@ -21,7 +21,10 @@ pub async fn serve(config: &AppConfig) -> Result<()> {
     let listener = tokio::net::TcpListener::bind(config.server_addr).await?;
     info!("✅ TCP listener bound to {0}", config.server_addr);
 
-    axum::serve(listener, router.into_make_service()).await?;
+    let server_future = axum::serve(listener, router.into_make_service());
+    info!("✅ Server is listening on {0}", config.server_addr);
+
+    server_future.await?;
 
     Ok(())
 }
