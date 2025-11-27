@@ -1,5 +1,10 @@
 - [ ] set up e2e
 - [ ] add e2e suite for healthcheck
+- [ ] set up linting/prettyfier
+	- [ ] sorting and grouping of imports/exports
+	- [ ] forbid println!
+	- [ ] consider trailing comma for positional arguments - always for > 1 arg (not needed, >2 pos args should be quite rare)
+	- [ ] max line len
 - [ ] add precommit
 
 # keep this project as an Axum+Tower code reference https://github.com/emarifer/rust-axum-askama-htmx-todoapp/blob/main/src/handler/mod.rs#L36

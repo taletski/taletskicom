@@ -1,7 +1,8 @@
-mod serve;
+mod server;
 mod route;
 mod handlers;
 mod config;
+mod middleware;
 
 use anyhow::Result;
 use dotenvy::dotenv;
@@ -11,7 +12,7 @@ async fn main() -> Result<()> {
     dotenv()?;
 
     let config = config::AppConfig::init();
-    serve::serve(&config).await?;
+    server::serve(&config).await?;
 
     Ok(())
 }

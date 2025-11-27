@@ -1,47 +1,51 @@
-use fantoccini::{ClientBuilder, Locator};
+use anyhow::Result;
+
+mod config_mock;
+use config_mock::AppConfigMock;
+
+mod browser;
+use browser::Browser;
+
+mod webdriver_server;
+use webdriver_server::WebDriverServer;
+
 use taletskicom;
-use webdriver_install::Driver;
 
 // #[cfg(not(test))]
-// compile_error!("e2e crate is for tests only - do not depend on it");
+// compile_error!("E2E crate is for tests only - do not depend on it");
 
-static RUNTIME: std::sync::Once = std::sync::Once::new();
-
-struct WebdriverHandle {
-    process: std::process::Child,
-}
-
-pub enum Browser {
-    Chrome,
-}
-
-impl Browser {
-    pub fn get() -> Self {
-        // hard-coded for now
-        Browser::Chrome
-    }
-
-    pub fn launch(&self) -> WebdriverHandle {
-        let config = taletskicom::config::AppConfig::init();
-        let port = config.server_addr.port();
-        let child = match self {
-            Browser::Chrome => {
-                webdriver_install::Driver::Chrome.install().expect("Chrome webdriver installed")
-            }
-        }
-        // WebdriverHandle { process:  child }
-    }
-}
-
-pub struct TestContext {
-    pub tester: fantoccini::Client,
+pub struct TestCtx {
+    pub client: thirtyfour::WebDriver,
     pub base_url: String,
+    _driver: WebDriverServer,
+    _server: tokio::task::JoinHandle<Result<()>>,
 }
 
-// impl TestContext {
-//     pub async fn init() -> Self {
-//         RUNTIME.call_once(|| {
-//             chromedriver_autoinstaller
-//         });
-//     }
-// }
+impl TestCtx {
+    pub async fn new() -> Self {
+        let mock_app_config = AppConfigMock::init();
+        let _server = tokio::task::spawn(taletskicom::server::serve(mock_app_config));
+
+        let browser = Browser::current();
+        let web_driver_server = WebDriverServer::launch(&browser).await;
+        let test_client = browser.connect_test_client(web_driver_server.port).await;
+
+        TestCtx {
+            client: test_client,
+            base_url: format!("http://{}", mock_app_config.server_addr.to_string()),
+            _driver: web_driver_server,
+            _server,
+        }
+    }
+
+    pub fn app_url(&self, rel_path: &str) -> String {
+        format!("{}{}", &self.base_url, rel_path)
+    }
+}
+
+impl Drop for TestCtx {
+    fn drop(&mut self) {
+        // Not doing self.client.quit() because it allows checking browser state on failed
+        // tests in the headed mode.
+    }
+}
