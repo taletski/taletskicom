@@ -1,8 +1,15 @@
-mod server;
-mod route;
-mod handlers;
+#![deny(
+    clippy::print_stdout,
+    clippy::print_stderr,
+    clippy::dbg_macro,
+    clippy::unimplemented
+)]
+
 mod config;
+mod handlers;
 mod middleware;
+mod route;
+mod server;
 
 use anyhow::Result;
 use dotenvy::dotenv;

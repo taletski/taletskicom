@@ -11,6 +11,6 @@ impl AppConfigMock {
         static MOCK_APP_CONFIG: AppConfig = AppConfig {
             server_addr: SocketAddr::new(IP, PORT),
         };
-				&MOCK_APP_CONFIG
+        &MOCK_APP_CONFIG
     }
 }

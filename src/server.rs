@@ -2,11 +2,15 @@ use anyhow::Result;
 use tracing::info;
 use tracing_subscriber::{self, layer::SubscriberExt, util::SubscriberInitExt};
 
-use crate::route::create_router;
 use crate::config::AppConfig;
+use crate::route::create_router;
 
 pub async fn serve(config: &AppConfig) -> Result<()> {
-    println!("⏳ Starting server on {0}", config.server_addr);
+    #[allow(clippy::print_stdout)]
+    {
+        println!("⏳ Starting server on {0}", config.server_addr);
+    }
+
     tracing_subscriber::registry()
         .with(
             tracing_subscriber::EnvFilter::try_from_default_env()
@@ -28,4 +32,3 @@ pub async fn serve(config: &AppConfig) -> Result<()> {
 
     Ok(())
 }
-

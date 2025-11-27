@@ -1,23 +1,37 @@
 # Taletski.com
 
-My personal website built with Rust.
-This is by far not the best stack choice, but I do it for fun and for learning as I am working on making Rust my go-to language. 
+Code for my personal website.
+
+## Context
+Everything is written in Rust with Axum and Tower for HTTP server functionality and HTML/JS/Tailwind for front-end.
+Rust is by far an overkill for such a simple static website. I am just working on making Rust my go-to language, as I am excited about the language syntax, features, and capabilities and want to explore its strengths and weaknesses more in depth in all kinds of projects.
+
+## Development
+
+Set up the dev environment with
+```bash
+bash ./scripts/bootstrap-dev.sh
+```
+You are all set, now you have:
+- Pre-commit formatting and linting
+- Commit message lint for conventional commits
 
 ## Testing
 
 ### Unit tests
-Just run `cargo test`;
+Run `cargo test`.
 
-### Local E2E and Screenshot Testing
-The repo features full local end-to-end testing. This may seem an overkill, but there are reasons to have it:
-1. I am way too lazy to re-test things manually;
-2. I will refactor this project aggressively from time to time while I am learning more about Rust;
-3. I wanted to try out E2E setup in Rust ecosystem;
+### Local E2E
+You'll notice this repo has a full local E2E testing setup. Yeah, it might be a bit much, but here's why it's there:
+1. I hate manually re-testing things, so I automated it.
+2. I plan on refactoring this constantly as I get better with Rust.
+3. I was curious about how E2E testing works in Rust.
+4. Frankly, I'm a stickler for production-grade code.
 
 #### Prerequisites
 1. A chromedriver compatible with your local browser. You can check the latest version [here](https://googlechromelabs.github.io/chrome-for-testing/).
     Make sure to download the version corresponding to your installed Chrome version.
-    After download, make chromedriver available on PATH. Easiest way to do it on MacOS is to `mv .../path/to/chromedriver /usr/local/bin/chromedriver`. 
+    After download, make chromedriver available on PATH. Easiest way to do it on MacOS is to `mv .../path/to/chromedriver /usr/local/bin/chromedriver`.
 
 #### Running the tests
 Run local E2E with `cargo test -p e2e`.

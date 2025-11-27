@@ -1,10 +1,18 @@
-- [ ] set up e2e
-- [ ] add e2e suite for healthcheck
-- [ ] set up linting/prettyfier
-	- [ ] sorting and grouping of imports/exports
-	- [ ] forbid println!
-	- [ ] consider trailing comma for positional arguments - always for > 1 arg (not needed, >2 pos args should be quite rare)
-	- [ ] max line len
-- [ ] add precommit
+- [x] set up e2e
+- [x] add e2e suite for healthcheck
+- [x] set up linting/prettyfier
+	- [x] sorting and grouping of imports/exports
+	- [x] forbid println! and other prints for debugging
+	- [x] consider trailing comma for positional arguments - always for > 1 arg (not needed, >2 pos args should be quite rare)
+	- [x] max line len
+- [x] set up precommit
+- [x] set up commitlint for conventional commits
+- [ ] make sure precommit and linting works for tests/e2e workspace
+- [ ] add the main page
+- [ ] add contacts
+- [ ] add links to resume - text and pdf versions
+- [ ] add analytics
+- [ ] add CI
+- [ ] deploy
 
 # keep this project as an Axum+Tower code reference https://github.com/emarifer/rust-axum-askama-htmx-todoapp/blob/main/src/handler/mod.rs#L36

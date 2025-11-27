@@ -14,6 +14,6 @@ impl AppConfig {
     }
 
     fn get_var(name: &str) -> String {
-        std::env::var(name).expect(&format!("{name} should be set in .env"))
+        std::env::var(name).unwrap_or_else(|_| panic!("{name} should be set in .env"))
     }
 }

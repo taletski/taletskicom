@@ -1,6 +1,6 @@
-use thirtyfour::{self, ChromiumLikeCapabilities, DesiredCapabilities, WebDriver};
 use crate::webdriver_server::WebDriverServer;
 use strum;
+use thirtyfour::{self, ChromiumLikeCapabilities, DesiredCapabilities, WebDriver};
 
 #[derive(strum::Display)]
 pub enum Browser {
@@ -14,16 +14,16 @@ impl Browser {
         Browser::Chrome
     }
 
-    pub fn webdriver_bin_name (&self) -> &'static str {
+    pub fn webdriver_bin_name(&self) -> &'static str {
         match self {
             Browser::Chrome => "chromedriver",
-        } 
+        }
     }
 
     pub fn webdriver_bin_args(&self, port: u16) -> String {
         match self {
             Browser::Chrome => format!("--port={port}"),
-        } 
+        }
     }
 
     pub async fn connect_test_client(&self, port: u16) -> thirtyfour::WebDriver {
@@ -39,7 +39,7 @@ impl Browser {
                 caps.add_arg("--no-sandbox")
                     .expect("Failed to add the flag disabling Chrome sandbox");
                 caps
-            }
+            },
         };
         // Disable TLS errors for local testing
         capabilities

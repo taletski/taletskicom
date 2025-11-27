@@ -71,8 +71,8 @@ impl Drop for WebDriverServer {
                     "Failed to kill webdriver process with id {}. Error: {error}",
                     self.process.id()
                 )
-            }
-            _ => {}
+            },
+            _ => {},
         }
     }
 }
