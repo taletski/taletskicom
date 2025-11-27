@@ -7,7 +7,10 @@ const PORT: u16 = 8080;
 pub struct AppConfigMock {}
 
 impl AppConfigMock {
+    // test
+    #[deny(clippy::print_stderr)]
     pub fn init() -> &'static AppConfig {
+        println!("test");
         static MOCK_APP_CONFIG: AppConfig = AppConfig {
             server_addr: SocketAddr::new(IP, PORT),
         };

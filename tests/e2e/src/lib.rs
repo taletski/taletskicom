@@ -9,8 +9,6 @@ use browser::Browser;
 mod webdriver_server;
 use webdriver_server::WebDriverServer;
 
-use taletskicom;
-
 // #[cfg(not(test))]
 // compile_error!("E2E crate is for tests only - do not depend on it");
 
@@ -32,7 +30,7 @@ impl TestCtx {
 
         TestCtx {
             client: test_client,
-            base_url: format!("http://{}", mock_app_config.server_addr.to_string()),
+            base_url: format!("http://{}", mock_app_config.server_addr),
             _driver: web_driver_server,
             _server,
         }

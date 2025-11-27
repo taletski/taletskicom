@@ -1,5 +1,4 @@
 use crate::webdriver_server::WebDriverServer;
-use strum;
 use thirtyfour::{self, ChromiumLikeCapabilities, DesiredCapabilities, WebDriver};
 
 #[derive(strum::Display)]

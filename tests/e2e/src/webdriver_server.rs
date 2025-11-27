@@ -2,8 +2,6 @@ use crate::browser::Browser;
 
 use std::process::Command;
 
-use portpicker;
-use reqwest;
 use tokio::time::Duration;
 
 pub struct WebDriverServer {
@@ -16,7 +14,7 @@ impl WebDriverServer {
 
     pub async fn launch(browser: &Browser) -> Self {
         let port = portpicker::pick_unused_port()
-            .expect(&format!("No free port found for the {} webdriver", browser));
+            .unwrap_or_else(|| panic!("No free port found for the {} webdriver", browser));
         let process = Command::new(browser.webdriver_bin_name())
             .arg(browser.webdriver_bin_args(port))
             .spawn()
@@ -54,25 +52,24 @@ impl WebDriverServer {
             }
         })
         .await
-        .expect(&format!(
-            "{} webdriver endpoint {} did not respond in {}s",
-            browser,
-            endpoint,
-            WebDriverServer::START_WAIT_TIMEOUT.as_secs()
-        ));
+        .unwrap_or_else(|_| {
+            panic!(
+                "{} webdriver endpoint {} did not respond in {}s",
+                browser,
+                endpoint,
+                WebDriverServer::START_WAIT_TIMEOUT.as_secs()
+            )
+        });
     }
 }
 
 impl Drop for WebDriverServer {
     fn drop(&mut self) {
-        match self.process.kill() {
-            Err(error) => {
-                eprintln!(
-                    "Failed to kill webdriver process with id {}. Error: {error}",
-                    self.process.id()
-                )
-            },
-            _ => {},
+        if let Err(error) = self.process.kill() {
+            eprintln!(
+                "Failed to kill webdriver process with id {}. Error: {error}",
+                self.process.id()
+            )
         }
     }
 }
