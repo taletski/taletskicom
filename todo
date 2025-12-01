@@ -7,8 +7,9 @@
 	- [x] max line len
 - [x] set up precommit
 - [x] set up commitlint for conventional commits
-- [ ] make sure precommit and linting works for tests/e2e workspace
-- [ ] add the main page
+- [x] make sure precommit and linting works for tests/e2e workspace
+- [x] add the main page stub
+- [ ] add the design system / css
 - [ ] add contacts
 - [ ] add links to resume - text and pdf versions
 - [ ] add analytics

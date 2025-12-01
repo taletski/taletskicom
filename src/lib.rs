@@ -11,4 +11,6 @@ pub mod server;
 
 mod handlers;
 mod middleware;
+mod response;
 mod route;
+mod templates;
