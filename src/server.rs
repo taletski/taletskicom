@@ -19,7 +19,7 @@ pub async fn serve(config: &AppConfig) -> Result<()> {
         .with(tracing_subscriber::fmt::layer())
         .try_init()?;
 
-    let router = create_router();
+    let router = create_router()?;
     info!("✅ Router ready");
 
     let listener = tokio::net::TcpListener::bind(config.server_addr).await?;
