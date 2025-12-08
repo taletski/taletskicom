@@ -1,10 +1,28 @@
 {% extends "base/base.html" %}
 
 {% block content %}
-	<p>
-- 5+ years of product-focused engineering with TypeScript, React, and Node.js.
-- Recent experience as a Technical Product Manager, shipping features that doubled subscribers to over 20,000.
-- Architected and built core systems for OAuth, payments (Stripe), AI features and UI component libraries used by multiple squads.
-- Ensured production stability by creating a BDD test harness that resulted in zero P1-P3 frontend bugs for 12 consecutive months.
-	</p>
+<div class="flex flex-col align-stretch w-full max-w-lg px-6 gap-7">
+	<div class="flex flex-col gap-2 items-stretch">
+		<h1>Hi, I'm Kirill 👋</h1>
+		<p class="text-lg text-secondary"><strong>Senior Frontend Engineer</strong> with a <strong>Product Leadership</strong> experience</p>
+	</div>
+	<ul class="flex flex-col gap-1 pl-5" style="list-style: initial;">
+		<li>6 years of product-focused engineering with TypeScript, React, Next.js and Node.js.</li>
+		<li>Recent experience as a Technical Product Leader, shipping features that doubled subscribers to over 20,000.</li>
+		<li>Architected and built core systems for OAuth, payments (Stripe), AI features and UI component libraries used by multiple squads.</li>
+		<li>Ensured production stability by creating a BDD test harness that resulted in zero P1-P3 frontend bugs for 12 consecutive months.</li>
+	</ul>
+	<div class="flex flex-col gap-2">
+		<h2>Tech Competencies</h2>
+		<p>TypeScript & JavaScript, React, Next.js, React Native, Node.js, PostgreSQL, Rust</p>
+	</div>
+	<div class="w-full flex flex-col gap-2 mb-8">
+		<h2>Contacts and Links</h2>
+		<ul class="flex flex-col gap-1">
+			<li><a href="mailto:kirill@taletski.com">📬 kirill@taletski.com</a></li>
+			<li><a href="https://www.linkedin.com/in/taletski">💼 linkedin.com/in/taletski</a></li>
+			<li><a href="https://github.com/taletski">🧑‍💻 github.com/taletski</a></li>
+		</ul>
+	</div>
+</div>
 {% endblock content %}

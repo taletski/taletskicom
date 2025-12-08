@@ -99,10 +99,10 @@ body {
 	line-height: var(--line-normal);
 }
 
-head,
-main,
-footer {
-	width: 100%;
+ul,
+ol {
+	all: unset;
+	list-style: none;
 }
 
 /* ---------------------
@@ -187,6 +187,16 @@ small {
 }
 .justify-between {
 	justify-content: space-between;
+}
+
+.flex-grow {
+	flex-grow: 1;
+}
+.flex-grow-0 {
+	flex-grow: 1;
+}
+.flex-1 {
+	flex: 1 1 auto;
 }
 
 .gap-1 {

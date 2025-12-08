@@ -6,7 +6,7 @@
 		<meta name="color-scheme" content="light dark">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<meta name="description" content="Frontend-focused full-stack product engineer with deep TypeScript/React expertise, 0→1 delivery experience, and emerging Rust proficiency." >
-		<title>Kirill Taletski - Senior Frontend-Focused Full-Stack Product Engineer</title>
+		<title>Kirill Taletski - Senior Frontend Product Engineer</title>
 		<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4">
 		<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 		<style>
@@ -14,13 +14,17 @@
     </style>
 	</head>
 
-	<body>
-		<header>
+	<body class="flex flex-col items-stretch">
+		<header class="w-full">
 			{% include "partials/header.html" %}
-		<header>
+		</header>
 
-		<main>
+		<main class="flex flex-col flex-grow items-center">
 			{% block content %}{% endblock content %}
-		<main>
+		</main>
+
+		<footer class="flex justify-center">
+			<small class="block w-full max-w-lg text-center p-6">Kirill Taletski (c) 2025. All rightst reserved.</small>
+		</footer>
 	</body>
 </html>
