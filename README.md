@@ -13,8 +13,9 @@ Set up the dev environment with
 bash ./scripts/bootstrap-dev.sh
 ```
 You are all set, now you have:
-- Pre-commit formatting and linting
-- Commit message lint for conventional commits
+- A dev server with live rebuilds on file changes. Run it with `cargo dev`
+- Pre-commit formatting and linting. Fires automatically on commit.
+- Commit message lint for conventional commits. Fires automatically on commit.
 
 ## Testing
 

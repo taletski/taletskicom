@@ -24,14 +24,11 @@ repos:
       language: system
       types: [rust]
       args: ["--all", "--"]
-  - repo: https://github.com/espressif/conventional-precommit-linter
-    rev: v1.10.0
+  - repo: https://github.com/biomejs/pre-commit
+    rev: v2.3.8 # Use the sha / tag you want to point at
     hooks:
-      - id: conventional-precommit-linter
-        stages: [commit-msg]
-        args:
-          # https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum
-          - --types=[build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test]
+      - id: biome-check
+        files: ".(html|css|js|ts)"
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.1.0
     hooks:
@@ -40,6 +37,15 @@ repos:
     - id: check-merge-conflict
     - id: check-symlinks
     - id: check-yaml
+    - id: check-json
     - id: end-of-file-fixer
     - id: mixed-line-ending
     - id: trailing-whitespace
+  - repo: https://github.com/espressif/conventional-precommit-linter
+    rev: v1.10.0
+    hooks:
+      - id: conventional-precommit-linter
+        stages: [commit-msg]
+        args:
+          # https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum
+          - --types=[build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test]
