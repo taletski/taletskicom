@@ -1524,9 +1524,11 @@ dependencies = [
  "axum",
  "dotenvy",
  "serde_json",
+ "strum",
  "tokio",
  "tower",
  "tower-http",
+ "tower-livereload",
  "tracing",
  "tracing-subscriber",
 ]
@@ -1747,6 +1749,20 @@ name = "tower-layer"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "121c2a6cda46980bb0fcd1647ffaf6cd3fc79a013de288782836f6df9c48780e"
+
+[[package]]
+name = "tower-livereload"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2b00c1a6410a8ebe656918b9be1b9f930123ff51bdfdbca95d2c04681ca283be"
+dependencies = [
+ "bytes",
+ "http",
+ "http-body",
+ "pin-project-lite",
+ "tokio",
+ "tower",
+]
 
 [[package]]
 name = "tower-service"

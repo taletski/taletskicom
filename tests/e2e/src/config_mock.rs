@@ -1,5 +1,5 @@
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
-use taletskicom::config::AppConfig;
+use taletskicom::config::{AppConfig, Env};
 
 const IP: IpAddr = IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1));
 const PORT: u16 = 8080;
@@ -12,6 +12,7 @@ impl AppConfigMock {
     pub fn init() -> &'static AppConfig {
         println!("test");
         static MOCK_APP_CONFIG: AppConfig = AppConfig {
+            env: Env::Test,
             server_addr: SocketAddr::new(IP, PORT),
         };
         &MOCK_APP_CONFIG
