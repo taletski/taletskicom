@@ -1,22 +1,4 @@
 /* ---------------------
- * MINIMAL RESET
- * ------------------ */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-fg);
-  font-family: system-ui, sans-serif;
-  line-height: var(--line-normal);
-}
-
-/* ---------------------
  * BASE TOKENS
  * ------------------ */
 
@@ -90,6 +72,33 @@ body {
   --color-text-secondary: var(--color-muted);
 }
 
+/* ---------------------
+ * MINIMAL RESET
+ * ------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+	height: 100dvh; /* for flex height containers (e.g. height: 100%, etc.) */
+	height: 100vh; /* fallback for dvh */
+	width: 100dvw; /* for flex width containers (e.g. width: 100%, etc.) */
+	width: 100vw; /* fallback for dvw */
+	overflow: auto;
+
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: system-ui, sans-serif;
+  line-height: var(--line-normal);
+}
+
+head, main, footer {
+	width: 100%;
+}
 
 /* ---------------------
  * TYPOGRAPHY
