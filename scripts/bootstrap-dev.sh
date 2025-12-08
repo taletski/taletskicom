@@ -7,4 +7,6 @@ prek install --hook-type pre-commit --hook-type commit-msg # Install git hooks
 
 cargo install cargo-watch # Dev server for live updates
 
+cp .env.example .env # Set up a proper .env
+
 echo "✅ All set up, happy coding!"

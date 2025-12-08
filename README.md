@@ -13,7 +13,8 @@ Set up the dev environment with
 bash ./scripts/bootstrap-dev.sh
 ```
 You are all set, now you have:
-- A dev server with live rebuilds on file changes. Run it with `cargo dev`
+- A proper `.env` file for local debug.
+- A dev server with live rebuilds on file changes. Run it with `cargo dev`.
 - Pre-commit formatting and linting. Fires automatically on commit.
 - Commit message lint for conventional commits. Fires automatically on commit.
 
