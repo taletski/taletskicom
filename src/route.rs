@@ -1,6 +1,7 @@
 use anyhow::Result;
 use axum::routing::get;
 use axum::{self, Router};
+use tower_http::compression::CompressionLayer;
 use tower_http::services::ServeDir;
 use tower_livereload::LiveReloadLayer;
 
@@ -21,6 +22,8 @@ pub fn create_router(config: &AppConfig) -> Result<Router> {
     if config.env == Env::Dev {
         router = router.layer(LiveReloadLayer::new());
     }
+
+    router = router.layer(CompressionLayer::new());
 
     Ok(router)
 }
