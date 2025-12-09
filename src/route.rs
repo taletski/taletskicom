@@ -16,7 +16,14 @@ pub fn create_router(config: &AppConfig) -> Result<Router> {
         .layer(get_configured_trace_layer())
         .nest_service(
             "/assets",
-            ServeDir::new(format!("{}/assets", std::env::current_dir()?.display())),
+            ServeDir::new(format!(
+                "{}/assets",
+                std::env::current_dir()
+                    .unwrap_or_else(|_| panic!(
+                        "Failed to current dir. The assets dir can not be served."
+                    ))
+                    .display()
+            )),
         );
 
     if config.env == Env::Dev {
