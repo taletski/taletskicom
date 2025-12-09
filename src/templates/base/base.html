@@ -5,8 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="color-scheme" content="light dark">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta name="description" content="Frontend-focused full-stack product engineer with deep TypeScript/React expertise, 0→1 delivery experience, and emerging Rust proficiency." >
-		<title>Kirill Taletski - Senior Frontend Product Engineer</title>
+
+		{# Title and description should be unique per page for the best SEO #}
+		<title>{% block title %}{% endblock title %}</title>
+		<meta name="description" content="{% block description %}{% endblock description %}">
+
+		{# Per page tags #}
+		{% block head %}{% endblock head %}
+
 		<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=4">
 		<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 		<style>
@@ -24,7 +30,7 @@
 		</main>
 
 		<footer class="flex justify-center">
-			<small class="block w-full max-w-lg text-center p-6">Kirill Taletski (c) 2025. All rightst reserved.</small>
+			<small class="block w-full max-w-lg text-center p-6">(c) 2025 Kirill Taletski.</small>
 		</footer>
 	</body>
 </html>
