@@ -4,7 +4,46 @@
 {% block description %}Senior Frontend Product Engineer with deep TypeScript/React/Next expertise, 0→1 delivery experience, and emerging Rust proficiency.{% endblock description %}
 
 {% block head %}
-	<link rel="canonical" href="https://taletski.com">
+	<link rel="canonical" href="https://taletski.com/">
+
+	{# --- Open Graph --- #}
+	<meta property="og:title" content="Kirill Taletski — Senior Frontend Product Engineer">
+	<meta property="og:description" content="Senior Frontend Product Engineer with deep TypeScript/React/Next expertise, 0→1 delivery experience, and emerging Rust proficiency.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://taletski.com/">
+
+	{# --- Twitter Card --- #}
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Kirill Taletski — Senior Frontend Product Engineer">
+	<meta name="twitter:description" content="Senior Frontend Product Engineer with deep TypeScript/React/Next expertise, 0→1 delivery experience, and emerging Rust proficiency.">
+	<meta name="twitter:creator" content="@kirill_taletski">
+
+	{# --- Person JSON-LD --- #}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Kirill Taletski",
+			"url": "https://taletski.com/",
+			"jobTitle": "Senior Frontend Product Engineer",
+			"email": "mailto:kirill@taletski.com",
+			"sameAs": [
+				"https://github.com/taletski",
+				"https://www.linkedin.com/in/taletski",
+				"https://x.com/kirill_taletski"
+			]
+		}
+	</script>
+
+	{# --- WebSite JSON-LD --- #}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Kirill Taletski",
+			"url": "https://taletski.com/",
+		}
+	</script>
 {% endblock head %}
 
 {% block content %}
