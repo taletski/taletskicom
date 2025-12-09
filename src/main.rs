@@ -18,7 +18,7 @@ use dotenvy::dotenv;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    dotenv()?;
+    dotenv().expect("Failed to init dotenv");
 
     let config = config::AppConfig::init();
     server::serve(&config).await?;
