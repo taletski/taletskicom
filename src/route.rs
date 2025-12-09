@@ -1,8 +1,8 @@
 use anyhow::Result;
-use axum::routing::get;
+use axum::routing::{get, get_service};
 use axum::{self, Router};
 use tower_http::compression::CompressionLayer;
-use tower_http::services::ServeDir;
+use tower_http::services::{ServeDir, ServeFile};
 use tower_livereload::LiveReloadLayer;
 
 use crate::config::{AppConfig, Env};
@@ -13,6 +13,14 @@ pub fn create_router(config: &AppConfig) -> Result<Router> {
     let mut router = Router::new()
         .route("/", get(homepage_handler))
         .route("/healthcheck", get(healthcheck_handler))
+        .route(
+            "/robots.txt",
+            get_service(ServeFile::new("static/robots.txt")),
+        )
+        .route(
+            "/sitemap.xml",
+            get_service(ServeFile::new("static/sitemap.xml")),
+        )
         .layer(get_configured_trace_layer())
         .nest_service(
             "/assets",
