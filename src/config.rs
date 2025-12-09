@@ -16,6 +16,11 @@ pub struct AppConfig {
 
 impl AppConfig {
     pub fn init() -> Self {
+        // Populate env values from .env for local dev
+        if cfg!(debug_assertions) {
+            dotenvy::from_filename(".env").expect("Failed to load .env file");
+        }
+
         let env: Env = Self::get_var("ENV").parse().unwrap_or_else(|_| {
             panic!(
                 "Invalid ENV value in .env; valid options are {}",

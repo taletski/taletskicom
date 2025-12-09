@@ -14,13 +14,11 @@ mod server;
 mod templates;
 
 use anyhow::Result;
-use dotenvy::dotenv;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    dotenv()?;
-
     let config = config::AppConfig::init();
+
     server::serve(&config).await?;
 
     Ok(())
