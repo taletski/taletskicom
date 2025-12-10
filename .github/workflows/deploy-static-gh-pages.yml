@@ -25,7 +25,7 @@ jobs:
         run: cargo build-static
 
       - name: Deploy # pushes files to a branch used by GitHub pages
-        uses: peaceiris/actions-gh-pages@v7
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./crates/static_website/target/release_static
