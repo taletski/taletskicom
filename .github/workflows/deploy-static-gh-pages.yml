@@ -1,7 +1,5 @@
 name: Deploy
 
-run-name: ${{ github.actor }} is deploying `taletskicom@${{ github.sha[0..7] }}` to GitHub Pages
-
 contents: write # allows action to push to repo
 
 on:
