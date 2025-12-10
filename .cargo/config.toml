@@ -1,3 +1,0 @@
-[alias]
-dev = "watch -x run -i target"
-build-static = "build -p static_website"

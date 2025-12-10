@@ -1,9 +1,0 @@
-[package]
-name = "templates"
-version = "1.0.0"
-edition = "2024"
-
-[dependencies]
-askama = { version = "0.14.0", features = [] }
-axum = { version = "0.8.6", features = [] }
-tokio = { version = "1.0", features = ["full"] }
