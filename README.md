@@ -27,7 +27,7 @@ You are all set, now you have:
 ```bash
 cargo build-static
 ```
-Then it can be served from the `target/release_static` folder.
+Then it can be served from the `crates/static_website/target/release_static` folder.
 
 **Dynamic server** is built via
 ```bash
