@@ -8,10 +8,8 @@
 mod config;
 mod handlers;
 mod middleware;
-mod response;
 mod route;
 mod server;
-mod templates;
 
 use anyhow::Result;
 

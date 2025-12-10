@@ -6,6 +6,10 @@ Code for my personal website.
 Everything is written in Rust with Axum and Tower for HTTP server functionality and HTML/JS/Tailwind for front-end.
 Rust is by far an overkill for such a simple static website. I am just working on making Rust my go-to language, as I am excited about the language syntax, features, and capabilities and want to explore its strengths and weaknesses more in depth in all kinds of projects.
 
+The live Rust server version lives here [https://taletskicom-taletski4813-cs7j1su1.leapcell.dev/](https://taletskicom-taletski4813-cs7j1su1.leapcell.dev/). I had some fun with it and loved the experience so far. Looking forward to building more complex stuff.
+
+The actual [taletski.com](https://taletski.com) production website is pre-built and served as static files via GitHub Pages. This ensures the best performance and price balance for my simple needs. As it will evolve, I will most likely switch to a dynamic server approach again.
+
 ## Development
 
 Set up the dev environment with
@@ -17,6 +21,22 @@ You are all set, now you have:
 - A dev server with live rebuilds on file changes. Run it with `cargo dev`.
 - Pre-commit formatting and linting. Fires automatically on commit.
 - Commit message lint for conventional commits. Fires automatically on commit.
+
+## Building for Production
+**Static website** version is build via
+```bash
+cargo build-static
+```
+Then it can be served from the `target/release_static` folder.
+
+**Dynamic server** is built via
+```bash
+cargo build --release
+```
+And then is launched by running the release binary:
+```bash
+./target/release/taletskicom
+```
 
 ## Testing
 

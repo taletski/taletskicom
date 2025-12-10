@@ -1,2 +1,3 @@
 [alias]
 dev = "watch -x run -i target"
+build-static = "build --features build_static"
