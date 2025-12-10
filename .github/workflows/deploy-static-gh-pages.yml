@@ -1,6 +1,6 @@
-name: Deploy Static Site to GitHub Pages
+name: Deploy
 
-run-name: ${{ github.actor }} is deploying taletskicom
+run-name: ${{ github.actor }} is deploying `taletskicom@${{ github.sha }}` to GitHub Pages
 
 on:
   push:
@@ -30,4 +30,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./crates/static_website/target/release_static
           publish_branch: release-static
-          force_orphan: true   # forces creation of branch if it doesn’t exist
