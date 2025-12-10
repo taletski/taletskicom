@@ -1,6 +1,7 @@
 name: Deploy
 
-contents: write # allows action to push to repo
+permissions:
+  contents: write # allows action to push to repo
 
 on:
   push:
