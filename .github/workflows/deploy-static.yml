@@ -9,12 +9,12 @@ on:
       - master
 
 jobs:
-  build:
+  build and deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
@@ -25,9 +25,8 @@ jobs:
       - name: Build
         run: cargo build-static
 
-      - name: Deploy # pushes files to a branch used by GitHub pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./crates/static_website/target/release_static
-          publish_branch: release-static
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy crates/static_website/target/release_static --project-name=taletski-dev
