@@ -29,4 +29,4 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy crates/static_website/target/release_static --project-name=taletski-dev
+          command: pages deploy crates/static_website/target/release_static --project-name=taletski-dev --skip-caching
