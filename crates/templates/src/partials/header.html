@@ -1,12 +1,12 @@
 <div class="flex justify-center w-full">
-	<div class="w-full max-w-lg px-6 py-8">
-		<a href="/" aria-label="Website logo">
+	<div class="flex justify-between items-center w-full max-w-lg px-6 py-8">
+		<a class="h-full" href="/" aria-label="Website logo">
 			{% include "partials/main_logo.html" %}
 		</a>
 
-		<div>
+		<div class="flex flex-1 justify-end items-center h-full">
 			<!--  TODO: github icon -->
-			<!--  TODO: theme control -->
+			{% include "partials/theme_toggle/toggle.html" %}
 		</div>
 	</div>
 </div>

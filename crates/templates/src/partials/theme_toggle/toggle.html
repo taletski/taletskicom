@@ -1,0 +1,86 @@
+<button
+	class="btn-ghost btn"
+	type="button"
+	aria-describedby="theme-current"
+	id="theme-toggle-button"
+>
+	<div class="contents theme_toggle_icon theme_toggle__icon--system" aria-hidden="true">{% include "partials/theme_toggle/theme_system_icon.html" %}</div>
+	<div class="contents theme_toggle_icon theme_toggle__icon--light" aria-hidden="true">{% include "partials/theme_toggle/theme_light_icon.html" %}</div>
+	<div class="contents theme_toggle_icon theme_toggle__icon--dark" aria-hidden="true">{% include "partials/theme_toggle/theme_dark_icon.html" %}</div>
+
+	<span class="sr-only" id="theme-current"></span>
+
+	<style>
+		.theme_toggle_icon * {display: none}
+		:root[data-theme='system'] .theme_toggle__icon--system * {display: block}
+		:root[data-theme='light'] .theme_toggle__icon--light * {display: block}
+		:root[data-theme='dark'] .theme_toggle__icon--dark * {display: block}
+	</style>
+
+	<script>
+		const THEME_STORAGE_KEY = "theme";
+		const Theme = {
+			System: "system",
+			Light: "light",
+			Dark: "dark",
+		};
+		const NEXT_THEME_VALUE_FROM_CURRENT = {
+			[Theme.System]: Theme.Light,
+			[Theme.Light]: Theme.Dark,
+			[Theme.Dark]: Theme.System,
+		};
+		// ----------------------------------------------------
+
+		const currentTheme = getValidTheme(loadTheme());
+		setTheme(currentTheme);
+		setAriaLabelsFor(currentTheme);
+		setAriaPressed(Boolean(loadTheme()));
+		listenToToggleClicks();
+
+		// ----------------------------------------------------
+
+		function listenToToggleClicks() {
+			getToggleElement()?.addEventListener("click", onToggleTheme);
+		};
+		function onToggleTheme() {
+			const theme = getValidTheme(getTheme());
+			const nextTheme = getValidTheme(NEXT_THEME_VALUE_FROM_CURRENT[theme]);
+			setTheme(nextTheme);
+			setAriaLabelsFor(nextTheme);
+			setAriaPressed(true);
+			saveTheme(nextTheme);
+		};
+		function loadTheme() {
+			return localStorage.getItem(THEME_STORAGE_KEY);
+		};
+		function getTheme() {
+			return document.documentElement.dataset.theme;
+		};
+		function setTheme(theme) {
+			document.documentElement.dataset.theme = theme;
+		};
+		function saveTheme(theme) {
+			localStorage.setItem(THEME_STORAGE_KEY, theme);
+		};
+		function getValidTheme(theme) {
+			return isValidTheme(theme) ? theme : Theme.System;
+		};
+		function isValidTheme(theme) {
+			return Object.values(Theme).includes(theme);
+		};
+		function getToggleElement() {
+			return document.getElementById("theme-toggle-button");
+		};
+		function getAriaElement() {
+			return document.getElementById("theme-toggle-button");
+		};
+		function setAriaLabelsFor(theme) {
+			const nextTheme = getValidTheme(NEXT_THEME_VALUE_FROM_CURRENT[theme]);
+			getToggleElement()?.setAttribute("aria-label", `Switch to ${nextTheme} theme.`);
+			document.getElementById("theme-current").textContent = `Current theme ${theme}`
+		};
+		function setAriaPressed(value) {
+			getToggleElement()?.setAttribute("aria-pressed", Boolean(value));
+		};
+	</script>
+</button>
