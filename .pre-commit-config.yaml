@@ -28,11 +28,22 @@ repos:
       args: ["--all", "--"]
       stages: [pre-commit]
   - repo: https://github.com/biomejs/pre-commit
-    rev: v2.3.8 # Use the sha / tag you want to point at
+    rev: v2.3.8
     hooks:
       - id: biome-check
         files: ".(css|js|ts)"
         stages: [pre-commit]
+  - repo: https://github.com/ahmet-enes-demir/pre-commit-filename-linter.git
+    rev: v1.4.0
+    hooks:
+    - id: check-file-names
+      args: ['--config', '.file-dir-naming-convention.yaml']
+    - id: check-directory-names
+      args: ['--config', '.file-dir-naming-convention.yaml']
+    - id: check-empty-files
+      args: ['--config', '.file-dir-naming-convention.yaml']
+    - id: check-duplicate-files
+      args: ['--config', '.file-dir-naming-convention.yaml']
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.1.0
     hooks:
