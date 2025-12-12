@@ -25,8 +25,8 @@
 	--font-lg: 1.125rem;
 	--font-xl: 1.75rem;
 	/* Line Height */
-	--line-sm: 1.2;
-	--line-md: 1.5;
+	--line-tight: 1.2;
+	--line-normal: 1.5;
 
 	/* Headers */
 	--font-h1: 2rem;
