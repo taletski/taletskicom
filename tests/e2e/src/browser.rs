@@ -47,6 +47,7 @@ impl Browser {
         capabilities
             .set_headless()
             .expect("Failed to set test browser in headless mode");
+
         WebDriver::new(WebDriverServer::get_webdriver_base_url(port), capabilities)
             .await
             .expect("Failed to initialize WebDriver")

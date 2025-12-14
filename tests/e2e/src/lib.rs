@@ -26,6 +26,7 @@ impl TestCtx {
 
         let browser = Browser::current();
         let web_driver_server = WebDriverServer::launch(&browser).await;
+
         let test_client = browser.connect_test_client(web_driver_server.port).await;
 
         TestCtx {
@@ -36,14 +37,13 @@ impl TestCtx {
         }
     }
 
+    pub async fn cleanup(self) {
+        if let Err(err) = self.client.quit().await {
+            eprintln!("Failed to gracefully quit test runner: {err}");
+        };
+    }
+
     pub fn app_url(&self, rel_path: &str) -> String {
         format!("{}{}", &self.base_url, rel_path)
-    }
-}
-
-impl Drop for TestCtx {
-    fn drop(&mut self) {
-        // Not doing self.client.quit() because it allows checking browser state on failed
-        // tests in the headed mode.
     }
 }

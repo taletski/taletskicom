@@ -1,9 +1,9 @@
 use e2e::TestCtx;
 use tokio;
 
+#[e2e_ctx::inject]
 #[tokio::test]
-async fn homepage() {
-    let ctx = TestCtx::new().await;
+async fn homepage_can_be_loaded(ctx: TestCtx) {
     ctx.client
         .goto(&ctx.app_url("/"))
         .await

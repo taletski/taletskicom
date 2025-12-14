@@ -1,7 +1,5 @@
 use crate::browser::Browser;
-
 use std::process::Command;
-
 use tokio::time::Duration;
 
 pub struct WebDriverServer {
