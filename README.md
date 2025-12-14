@@ -47,7 +47,7 @@ Run `cargo test`.
 You'll notice this repo has a full local E2E testing setup. Yeah, it might be a bit much, but here's why it's there:
 1. I hate manually re-testing things, so I automated it.
 2. I plan on refactoring this constantly as I get better with Rust.
-3. I was curious about how E2E testing works in Rust.
+3. I was curious about the state of E2E testing tools in Rust.
 4. Frankly, I'm a stickler for production-grade code.
 
 #### Prerequisites
@@ -56,4 +56,4 @@ You'll notice this repo has a full local E2E testing setup. Yeah, it might be a 
     After download, make chromedriver available on PATH. Easiest way to do it on MacOS is to `mv .../path/to/chromedriver /usr/local/bin/chromedriver`.
 
 #### Running the tests
-Run local E2E with `cargo test -p e2e`.
+Run local E2E with `cargo e2e`.
