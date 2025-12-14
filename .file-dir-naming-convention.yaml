@@ -25,7 +25,8 @@ duplicate-files:
   allow-duplicates: false
 
 exclude-patterns:
-  # - ".git/"
+  - ".git/"
   - "target/"
   - ".env*"
   - "assets/favicon.svg"
+  - "Cargo.(lock|toml)"
