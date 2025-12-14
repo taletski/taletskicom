@@ -38,12 +38,16 @@ repos:
     hooks:
     - id: check-file-names
       args: ['--config', '.file-dir-naming-convention.yaml']
+      stages: [pre-commit]
     - id: check-directory-names
       args: ['--config', '.file-dir-naming-convention.yaml']
+      stages: [pre-commit]
     - id: check-empty-files
       args: ['--config', '.file-dir-naming-convention.yaml']
+      stages: [pre-commit]
     - id: check-duplicate-files
       args: ['--config', '.file-dir-naming-convention.yaml']
+      stages: [pre-commit]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.1.0
     hooks:
@@ -72,4 +76,4 @@ repos:
         stages: [commit-msg]
         args:
           # https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum
-          - --types=[build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test]
+          - --types=build,chore,ci,docs,feat,fix,perf,refactor,revert,style,test
